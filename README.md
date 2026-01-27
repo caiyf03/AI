@@ -1,18 +1,27 @@
-This is for my ShanghaiTech Artificial Intelligent Course final project
+# Hearts Game AI System
+
+This repository contains the official implementation for **Hearts Game AI System**
 
 The main text of the paper can be found at: [final report.pdf](final%20report.pdf)
 
-Due to the high difficulty of Hearts, it was challenging to find reference materials online. Our code framework was sourced from https://github.com/pjgao/MonteCarloHeartsAI , which is an unfinished codebase, only defined the rules of Hearts and provided a sample. It is crucial to note that the designed code does not adhere to the game rules. In other words, its decision design does not align with Hearts rules, resulting in incorrect card plays. The conclusions drawn from the original code are therefore not reliable. Nevertheless, it served only as a reference for understanding the game, and we made extensive modifications and debugging.
+This project develops an AI agent for the Hearts card game, a multi-player, imperfect-information environment requiring strategic reasoning and long-term planning. The goal is to compare classical search-based and learning-based decision-making methods under realistic game constraints.
 
-In addition to this, we independently made various contributions:
+**Key Features**
+-Supports multiple AI paradigms within a unified game engine
 
-1. We reconstructed the Monte Carlo algorithm, incorporating Hearts rules into the algorithm to ensure correct card plays.
+-Adaptive MCTS for improved runtime–performance trade-offs
 
-2. We expanded our algorithms to include Q-learning (core formula from class PPT), greedy (decision-making based on gaming techniques from BaiduBaike), and random (baseline for assessing algorithm performance). These three algorithms were applied to the other three players, enhancing opponent intelligence and increasing the difficulty of the game.
+-State abstraction enabling Q-learning in large, discrete action spaces
 
-3. We implemented both text-based (terminal) and graphical (pygame) outputs. After each round, we printed the card plays and remaining hand information for each player in the terminal. Additionally, using the pygame library, we achieved a visualized graphical interface, enhancing the user experience (see Figure).
+-Simulation and visualization tools for strategy comparison and analysis
 
-4. The original Monte Carlo assumes that all other players use the Monte Carlo algorithm by default. During the execution, we introduce hyperparameters that allow the algorithm to adjust based on the actual game. When leading by a significant margin in scores, it tends to assume that the opponents are using naive algorithms, with the aim of applying the concept of reinforcement learning, which estimates actual situations during the exploration process.
+**Methods**
+We implemented and evaluated greedy, Monte Carlo Tree Search (MCTS), and Q-learning agents. MCTS handles uncertainty through randomized rollouts and includes an adaptive variant that reduces computation when the agent is ahead. To enable learning in a large state space, the Q-learning agent uses state abstraction and reward shaping, learning strategic behavior through repeated self-play.
+
+**Results**
+Experiments over simulated games show that MCTS achieves the strongest performance at the cost of higher computation, while the Q-learning agent outperforms greedy and random baselines with improved adaptability. The results highlight trade-offs between decision quality, efficiency, and learning capability in imperfect-information games.
+
+
 ![](pic/1.png)
 ![](pic/2.png)
 ![](pic/3.png)
